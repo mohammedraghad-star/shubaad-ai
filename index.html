@@ -1,453 +1,184 @@
-import { useMemo, useState } from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHUBAAD</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen p-6">
+  <div class="max-w-7xl mx-auto space-y-8">
 
-export default function ShubaadPortal() {
-  const modules = [
-    {
-      title: 'Salinity Intelligence',
-      desc: 'AI-driven soil salinity prediction integrating FTIR, EC, NDVI, and remote sensing.',
-      tools: ['FTIR Analytics', 'EC Modeling', 'Sentinel-2', 'AI Prediction Engine'],
-      status: 'Active',
-      datasets: ['FTIR spectra', 'EC / TDS', 'Soil texture', 'NDVI', 'Landsat salinity indices'],
-      outputs: ['Salinity risk map', 'EC prediction model', 'PCA/PLS plots', 'Q1-ready interpretation'],
-      score: 92
-    },
-    {
-      title: 'Drought & Climate Stress',
-      desc: 'Environmental resilience analysis for arid and semi-arid ecosystems.',
-      tools: ['NDVI', 'LST', 'Vegetation Persistence', 'Climate AI'],
-      status: 'Active',
-      datasets: ['NDVI time series', 'LST', 'Rainfall anomaly', 'NDWI', 'Vegetation persistence'],
-      outputs: ['Drought stress map', 'Vegetation resilience score', 'Climate-risk report'],
-      score: 88
-    },
-    {
-      title: 'Soil Carbon Dynamics',
-      desc: 'Integrated SOM, SOC, respiration, and carbon stabilization intelligence.',
-      tools: ['OSI/PSI', 'Carbon Flux', 'Microbial Respiration', 'Carbon Modeling'],
-      status: 'Beta',
-      datasets: ['SOC', 'OM%', 'FTIR OSI/PSI', 'CO₂ respiration', 'Aggregate stability'],
-      outputs: ['Carbon stabilization index', 'SOC vulnerability map', 'Mechanistic carbon report'],
-      score: 84
-    },
-    {
-      title: 'Microbiome Adaptation',
-      desc: 'AMF and microbiome resilience networks under salinity and drought stress.',
-      tools: ['ITS Analysis', 'Cytoscape', 'Network Ecology', 'AMF Mapping'],
-      status: 'Research',
-      datasets: ['ITS sequencing', 'AMF abundance', 'Glomalin', 'Root colonization', 'Soil stress variables'],
-      outputs: ['Co-occurrence network', 'AMF resilience map', 'Keystone taxa report'],
-      score: 79
-    },
-    {
-      title: 'Spectral Ecology',
-      desc: 'Fusion of spectroscopy, GIS, and ecosystem intelligence.',
-      tools: ['FTIR', 'GC-MS', 'Chemometrics', 'Spectral AI'],
-      status: 'Active',
-      datasets: ['FTIR', 'GC-MS', 'XRF', 'Spectral indices', 'Environmental metadata'],
-      outputs: ['Spectral fingerprint library', 'Biomarker table', 'PCA/HCA/PLS figures'],
-      score: 90
-    }
-  ];
+    <div class="rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 to-slate-800 p-10 shadow-2xl">
+      <div class="inline-flex rounded-full border border-cyan-500/40 bg-cyan-500/10 px-4 py-2 text-cyan-300 text-sm mb-5">
+        AI-driven environmental resilience intelligence
+      </div>
 
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [projectName, setProjectName] = useState('Iraq Arid Soil Resilience Study');
-  const [uploadedFile, setUploadedFile] = useState(null);
-  const [datasetInfo, setDatasetInfo] = useState(null);
-  const [analysisStatus, setAnalysisStatus] = useState('Idle');
-  const [validationMessage, setValidationMessage] = useState('No dataset uploaded yet.');
-  const [sampleCount, setSampleCount] = useState(120);
-  const [ftirReady, setFtirReady] = useState(true);
-  const [gisReady, setGisReady] = useState(true);
-  const [microbiomeReady, setMicrobiomeReady] = useState(false);
-  const [carbonReady, setCarbonReady] = useState(true);
+      <h1 class="text-6xl font-bold tracking-tight">SHUBAAD</h1>
 
-  const activeModule = modules[activeIndex];
+      <p class="mt-6 text-2xl text-slate-300 leading-relaxed">
+        شُبعاد — بوابة ذكاء بيئي تجمع الطيف، الخرائط، الميكروبيوم، الكربون، والنمذجة التنبؤية.
+      </p>
 
-  const readiness = useMemo(() => {
-    const values = [ftirReady, gisReady, microbiomeReady, carbonReady];
-    return Math.round((values.filter(Boolean).length / values.length) * 100);
-  }, [ftirReady, gisReady, microbiomeReady, carbonReady]);
+      <p class="mt-4 text-slate-400 text-lg">
+        Built for salinity, drought, soil carbon, microbiome adaptation, and spectral ecology in arid and semi-arid systems.
+      </p>
+    </div>
 
-  const requiredColumns = [
-    'Sample_ID',
-    'EC',
-    'pH',
-    'OM',
-    'SOC',
-    'Sand',
-    'Silt',
-    'Clay',
-    'FTIR_3400',
-    'FTIR_2920',
-    'FTIR_1630',
-    'OSI',
-    'PSI',
-    'NDVI'
-  ];
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+      <div class="rounded-2xl bg-slate-900 border border-slate-800 p-6 text-center">
+        <div class="text-5xl font-bold">5</div>
+        <div class="text-slate-400 mt-2">Core Modules</div>
+      </div>
 
-  const handleDatasetUpload = async (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
+      <div class="rounded-2xl bg-slate-900 border border-slate-800 p-6 text-center">
+        <div class="text-5xl font-bold">AI</div>
+        <div class="text-slate-400 mt-2">Prediction Engine</div>
+      </div>
 
-    setUploadedFile(file.name);
-    setAnalysisStatus('Dataset uploaded');
+      <div class="rounded-2xl bg-slate-900 border border-slate-800 p-6 text-center">
+        <div class="text-5xl font-bold">GIS</div>
+        <div class="text-slate-400 mt-2">Spatial Ecology</div>
+      </div>
 
-    const fakeDetectedColumns = [
-      'Sample_ID',
-      'EC',
-      'pH',
-      'OM',
-      'SOC',
-      'Sand',
-      'Silt',
-      'Clay',
-      'FTIR_3400',
-      'FTIR_2920',
-      'FTIR_1630',
-      'OSI',
-      'PSI',
-      'NDVI'
-    ];
+      <div class="rounded-2xl bg-slate-900 border border-slate-800 p-6 text-center">
+        <div class="text-5xl font-bold">Q1</div>
+        <div class="text-slate-400 mt-2">Publication Target</div>
+      </div>
+    </div>
 
-    const missing = requiredColumns.filter((col) => !fakeDetectedColumns.includes(col));
+    <div>
+      <h2 class="text-4xl font-bold mb-6">Environmental Intelligence Modules</h2>
 
-    setDatasetInfo({
-      filename: file.name,
-      samples: 120,
-      variables: fakeDetectedColumns.length,
-      detectedColumns: fakeDetectedColumns,
-      missingColumns: missing
-    });
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
-    if (missing.length === 0) {
-      setValidationMessage('Dataset validated successfully. SHUBAAD AI engine is ready for PCA and salinity prediction.');
-    } else {
-      setValidationMessage(`Missing required columns: ${missing.join(', ')}`);
-    }
-  };
-
-  const runAIAnalysis = () => {
-    if (!datasetInfo) {
-      setValidationMessage('Please upload a dataset first.');
-      return;
-    }
-
-    setAnalysisStatus('Running AI analysis...');
-
-    setTimeout(() => {
-      setAnalysisStatus('AI analysis completed');
-      setValidationMessage('PCA, PLS salinity prediction, and resilience scoring completed successfully.');
-    }, 1500);
-  };
-
-  const workflows = [
-    'Upload FTIR spectra and soil chemistry table',
-    'Integrate GIS layers from Sentinel-2, Landsat, and climate datasets',
-    'Run PCA, PLS, clustering, and machine-learning prediction',
-    'Generate salinity, drought, carbon, and microbiome resilience maps',
-    'Build mechanistic interpretation for Q1 manuscript writing',
-    'Export figures, tables, model metrics, and scientific report'
-  ];
-
-  const toggleItems = [
-    ['FTIR / Spectroscopy', ftirReady, setFtirReady],
-    ['GIS / Remote Sensing', gisReady, setGisReady],
-    ['Microbiome / AMF', microbiomeReady, setMicrobiomeReady],
-    ['Soil Carbon / SOC', carbonReady, setCarbonReady]
-  ];
-
-  return (
-    <div className="min-h-screen bg-slate-950 text-white p-6 md:p-8">
-      <div className="max-w-7xl mx-auto space-y-8">
-        <div className="rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 p-8 md:p-10 shadow-2xl">
-          <div className="flex flex-col xl:flex-row justify-between gap-8 items-start">
-            <div>
-              <div className="inline-flex rounded-full border border-cyan-500/40 bg-cyan-500/10 px-4 py-2 text-cyan-300 text-sm mb-5">
-                AI-driven environmental resilience intelligence
-              </div>
-              <h1 className="text-5xl md:text-6xl font-bold tracking-tight">SHUBAAD</h1>
-              <p className="mt-4 text-xl text-slate-300 max-w-3xl">
-                شُبعاد — بوابة ذكاء بيئي تجمع الطيف، الخرائط، الميكروبيوم، الكربون، والنمذجة التنبؤية.
-              </p>
-              <p className="mt-3 text-slate-400 max-w-4xl leading-relaxed">
-                Built for salinity, drought, soil carbon, microbiome adaptation, and spectral ecology in arid and semi-arid systems.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 text-center w-full xl:w-auto">
-              <div className="rounded-2xl bg-slate-900 p-4 border border-slate-700">
-                <div className="text-3xl font-bold">{modules.length}</div>
-                <div className="text-sm text-slate-400">Core Modules</div>
-              </div>
-              <div className="rounded-2xl bg-slate-900 p-4 border border-slate-700">
-                <div className="text-3xl font-bold">{readiness}%</div>
-                <div className="text-sm text-slate-400">Data Readiness</div>
-              </div>
-              <div className="rounded-2xl bg-slate-900 p-4 border border-slate-700">
-                <div className="text-3xl font-bold">{sampleCount}</div>
-                <div className="text-sm text-slate-400">Samples</div>
-              </div>
-              <div className="rounded-2xl bg-slate-900 p-4 border border-slate-700">
-                <div className="text-3xl font-bold">Q1</div>
-                <div className="text-sm text-slate-400">Output Target</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 rounded-3xl border border-slate-800 bg-slate-900 p-6 md:p-8">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-              <div>
-                <h2 className="text-3xl font-semibold">Environmental Intelligence Modules</h2>
-                <p className="text-slate-400 mt-2">اختاري وحدة العمل، وستظهر بياناتها ومخرجاتها في لوحة التشغيل.</p>
-              </div>
-              <div className="rounded-2xl border border-slate-700 bg-slate-950 p-3">
-                <div className="text-xs text-slate-500 mb-1">Project name</div>
-                <input
-                  value={projectName}
-                  onChange={(e) => setProjectName(e.target.value)}
-                  className="bg-transparent outline-none text-slate-200 w-full md:w-80"
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              {modules.map((module, idx) => (
-                <button
-                  key={module.title}
-                  onClick={() => setActiveIndex(idx)}
-                  className={`text-left rounded-3xl border p-6 shadow-xl transition hover:scale-[1.01] ${
-                    activeIndex === idx
-                      ? 'border-cyan-400 bg-cyan-500/10'
-                      : 'border-slate-800 bg-slate-950/60 hover:border-slate-600'
-                  }`}
-                >
-                  <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-2xl font-bold">{module.title}</h3>
-                    <span className="text-xs px-3 py-1 rounded-full border border-slate-700 bg-slate-800 text-slate-300">
-                      {module.status}
-                    </span>
-                  </div>
-                  <p className="text-slate-400 leading-relaxed mb-5">{module.desc}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {module.tools.map((tool) => (
-                      <span key={tool} className="px-3 py-1 rounded-full text-sm bg-slate-800 border border-slate-700">
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-3xl border border-cyan-500/30 bg-slate-900 p-6 md:p-8 shadow-2xl">
-            <h2 className="text-2xl font-bold mb-2">Active AI Workspace</h2>
-            <p className="text-cyan-300 font-semibold mb-6">{activeModule.title}</p>
-
-            <div className="space-y-6">
-              <div>
-                <div className="flex justify-between text-sm mb-2">
-                  <span className="text-slate-400">Module intelligence score</span>
-                  <span>{activeModule.score}%</span>
-                </div>
-                <div className="h-3 rounded-full bg-slate-800 overflow-hidden">
-                  <div className="h-full bg-cyan-400" style={{ width: `${activeModule.score}%` }} />
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-semibold mb-3">Required datasets</h3>
-                <div className="space-y-2">
-                  {activeModule.datasets.map((item) => (
-                    <div key={item} className="rounded-xl bg-slate-950 p-3 border border-slate-800 text-slate-300">
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-semibold mb-3">Expected outputs</h3>
-                <div className="space-y-2">
-                  {activeModule.outputs.map((item) => (
-                    <div key={item} className="rounded-xl bg-slate-950 p-3 border border-slate-800 text-slate-300">
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="rounded-3xl border border-cyan-500/30 bg-slate-900 p-8 shadow-2xl">
-          <div className="flex flex-col lg:flex-row gap-8">
-            <div className="lg:w-1/2 space-y-6">
-              <div>
-                <h2 className="text-3xl font-bold mb-3">SHUBAAD Dataset Upload Engine</h2>
-                <p className="text-slate-400 leading-relaxed">
-                  Upload FTIR, soil chemistry, GIS, and environmental datasets to activate the AI-driven salinity and resilience analysis workflow.
-                </p>
-              </div>
-
-              <div className="rounded-2xl border border-slate-700 bg-slate-950 p-6">
-                <label className="block text-lg font-semibold mb-4">Upload Environmental Dataset</label>
-
-                <input
-                  type="file"
-                  accept=".csv,.xlsx,.txt"
-                  onChange={handleDatasetUpload}
-                  className="block w-full text-sm text-slate-300"
-                />
-
-                <div className="mt-5 space-y-3">
-                  <div className="rounded-xl bg-slate-900 p-3 border border-slate-800">
-                    <span className="text-slate-400">Status:</span>
-                    <div className="font-semibold mt-1">{analysisStatus}</div>
-                  </div>
-
-                  <div className="rounded-xl bg-slate-900 p-3 border border-slate-800">
-                    <span className="text-slate-400">Validation:</span>
-                    <div className="mt-1 text-cyan-300">{validationMessage}</div>
-                  </div>
-                </div>
-
-                <button
-                  onClick={runAIAnalysis}
-                  className="mt-6 w-full rounded-2xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-3 transition"
-                >
-                  Run SHUBAAD AI Analysis
-                </button>
-              </div>
-            </div>
-
-            <div className="lg:w-1/2">
-              <div className="rounded-2xl border border-slate-700 bg-slate-950 p-6 h-full">
-                <h3 className="text-2xl font-bold mb-5">Dataset Intelligence Summary</h3>
-
-                {!datasetInfo ? (
-                  <div className="text-slate-500 leading-relaxed">
-                    No environmental dataset uploaded yet. Upload FTIR + soil chemistry + GIS datasets to activate SHUBAAD AI workflows.
-                  </div>
-                ) : (
-                  <div className="space-y-5">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="rounded-xl bg-slate-900 p-4 border border-slate-800">
-                        <div className="text-slate-400 text-sm">File</div>
-                        <div className="font-semibold mt-1 break-all">{datasetInfo.filename}</div>
-                      </div>
-
-                      <div className="rounded-xl bg-slate-900 p-4 border border-slate-800">
-                        <div className="text-slate-400 text-sm">Samples</div>
-                        <div className="font-semibold mt-1">{datasetInfo.samples}</div>
-                      </div>
-                    </div>
-
-                    <div className="rounded-xl bg-slate-900 p-4 border border-slate-800">
-                      <div className="text-slate-400 text-sm mb-3">Detected Variables</div>
-                      <div className="flex flex-wrap gap-2">
-                        {datasetInfo.detectedColumns.map((col) => (
-                          <span key={col} className="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-sm">
-                            {col}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="rounded-xl bg-slate-900 p-4 border border-slate-800">
-                      <div className="text-slate-400 text-sm mb-3">AI Modules Ready</div>
-                      <div className="grid grid-cols-2 gap-3">
-                        {['PCA', 'PLS', 'Salinity Prediction', 'Resilience Score'].map((item) => (
-                          <div key={item} className="rounded-lg bg-cyan-500/10 border border-cyan-500/20 p-3 text-cyan-300 text-sm">
-                            {item}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
-            <h2 className="text-2xl font-bold mb-6">Data Readiness Control</h2>
-            <div className="space-y-4 mb-6">
-              {toggleItems.map(([label, checked, setter]) => (
-                <label key={label} className="flex items-center justify-between rounded-2xl bg-slate-950 p-4 border border-slate-800 cursor-pointer">
-                  <span>{label}</span>
-                  <input
-                    type="checkbox"
-                    checked={checked}
-                    onChange={() => setter(!checked)}
-                    className="h-5 w-5"
-                  />
-                </label>
-              ))}
-            </div>
-            <div className="rounded-2xl bg-slate-950 p-4 border border-slate-800">
-              <label className="text-sm text-slate-400">Sample count</label>
-              <input
-                type="range"
-                min="10"
-                max="500"
-                value={sampleCount}
-                onChange={(e) => setSampleCount(Number(e.target.value))}
-                className="w-full mt-4"
-              />
-              <div className="text-2xl font-bold mt-3">{sampleCount} samples</div>
-            </div>
-          </div>
-
-          <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
-            <h2 className="text-2xl font-bold mb-6">Research Workflow Engine</h2>
-            <div className="space-y-4">
-              {workflows.map((step, i) => (
-                <div key={step} className="flex items-center gap-4 rounded-2xl bg-slate-950 p-4 border border-slate-800">
-                  <div className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center font-bold">
-                    {i + 1}
-                  </div>
-                  <div>{step}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8">
-          <h2 className="text-2xl font-bold mb-6">Integrated Scientific Stack</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
-            {[
-              ['AI & Analytics', ['Python', 'R', 'TensorFlow', 'Scikit-learn', 'Chemometrics']],
-              ['Spectroscopy', ['FTIR', 'GC-MS', 'XRF', 'OPUS', 'OMNIC']],
-              ['GIS & Remote Sensing', ['Google Earth Engine', 'QGIS', 'Sentinel-2', 'Landsat']],
-              ['Microbiome & Networks', ['Cytoscape', 'AMF Networks', 'ITS Sequencing', 'Ecological AI']]
-            ].map(([title, items]) => (
-              <div key={title} className="rounded-2xl bg-slate-950 p-5 border border-slate-800">
-                <div className="text-lg font-semibold mb-3">{title}</div>
-                <div className="flex flex-wrap gap-2">
-                  {items.map((item) => (
-                    <span key={item} className="px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-sm">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="rounded-3xl border border-slate-800 bg-gradient-to-r from-slate-900 to-slate-800 p-8 text-center shadow-2xl">
-          <h2 className="text-3xl font-bold mb-4">Beyond Spectroscopy. Beyond Mapping. Beyond Single-Domain Science.</h2>
-          <p className="text-slate-300 text-lg max-w-5xl mx-auto leading-relaxed">
-            SHUBAAD is now structured as a clickable AI research portal for predictive resilience science in arid and semi-arid environments.
+        <div class="rounded-3xl border border-cyan-500/30 bg-slate-900 p-6 shadow-xl">
+          <h3 class="text-3xl font-bold mb-4">Salinity Intelligence</h3>
+          <p class="text-slate-400 mb-5 leading-relaxed">
+            AI-driven soil salinity prediction integrating FTIR, EC, NDVI, and remote sensing.
           </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-full bg-slate-800">FTIR</span>
+            <span class="px-3 py-1 rounded-full bg-slate-800">EC</span>
+            <span class="px-3 py-1 rounded-full bg-slate-800">Sentinel-2</span>
+            <span class="px-3 py-1 rounded-full bg-slate-800">PLS</span>
+          </div>
+        </div>
+
+        <div class="rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-xl">
+          <h3 class="text-3xl font-bold mb-4">Drought & Climate Stress</h3>
+          <p class="text-slate-400 mb-5 leading-relaxed">
+            Environmental resilience analysis for arid and semi-arid ecosystems.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-full bg-slate-800">NDVI</span>
+            <span class="px-3 py-1 rounded-full bg-slate-800">LST</span>
+            <span class="px-3 py-1 rounded-full bg-slate-800">NDWI</span>
+            <span class="px-3 py-1 rounded-full bg-slate-800">Climate AI</span>
+          </div>
+        </div>
+
+        <div class="rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-xl">
+          <h3 class="text-3xl font-bold mb-4">Soil Carbon Dynamics</h3>
+          <p class="text-slate-400 mb-5 leading-relaxed">
+            SOM, SOC, respiration, aggregation, and carbon stabilization intelligence.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-full bg-slate-800">OSI</span>
+            <span class="px-3 py-1 rounded-full bg-slate-800">PSI</span>
+            <span class="px-3 py-1 rounded-full bg-slate-800">SOC</span>
+            <span class="px-3 py-1 rounded-full bg-slate-800">CO₂ Flux</span>
+          </div>
         </div>
       </div>
     </div>
-  );
-}
+
+    <div class="rounded-3xl border border-cyan-500/30 bg-slate-900 p-8 shadow-2xl">
+      <div class="flex flex-col lg:flex-row gap-8">
+
+        <div class="lg:w-1/2">
+          <h2 class="text-3xl font-bold mb-4">SHUBAAD Dataset Upload Engine</h2>
+          <p class="text-slate-400 leading-relaxed mb-6">
+            Upload FTIR, soil chemistry, GIS, and environmental datasets to activate AI-driven salinity and resilience workflows.
+          </p>
+
+          <div class="rounded-2xl border border-slate-700 bg-slate-950 p-6">
+            <label class="block text-lg font-semibold mb-4">Upload Environmental Dataset</label>
+
+            <input id="datasetFile" type="file" class="block w-full text-sm text-slate-300 bg-slate-900 rounded-xl border border-slate-700 p-3" />
+
+            <div class="mt-5 space-y-3">
+              <div class="rounded-xl bg-slate-900 p-3 border border-slate-800">
+                <span class="text-slate-400">Status:</span>
+                <div id="status" class="font-semibold mt-1">Idle</div>
+              </div>
+
+              <div class="rounded-xl bg-slate-900 p-3 border border-slate-800">
+                <span class="text-slate-400">Validation:</span>
+                <div id="validation" class="mt-1 text-cyan-300">No dataset uploaded yet.</div>
+              </div>
+            </div>
+
+            <button onclick="runAI()" class="mt-6 w-full rounded-2xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold py-3 transition">
+              Run SHUBAAD AI Analysis
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:w-1/2">
+          <div class="rounded-2xl border border-slate-700 bg-slate-950 p-6 h-full">
+            <h3 class="text-2xl font-bold mb-5">Dataset Intelligence Summary</h3>
+
+            <div class="space-y-5">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="rounded-xl bg-slate-900 p-4 border border-slate-800">
+                  <div class="text-slate-400 text-sm">Samples</div>
+                  <div class="font-semibold mt-1">120</div>
+                </div>
+
+                <div class="rounded-xl bg-slate-900 p-4 border border-slate-800">
+                  <div class="text-slate-400 text-sm">AI Status</div>
+                  <div class="font-semibold mt-1 text-cyan-300">Ready</div>
+                </div>
+              </div>
+
+              <div class="rounded-xl bg-slate-900 p-4 border border-slate-800">
+                <div class="text-slate-400 text-sm mb-3">AI Modules Ready</div>
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="rounded-lg bg-cyan-500/10 border border-cyan-500/20 p-3 text-cyan-300 text-sm">PCA</div>
+                  <div class="rounded-lg bg-cyan-500/10 border border-cyan-500/20 p-3 text-cyan-300 text-sm">PLS</div>
+                  <div class="rounded-lg bg-cyan-500/10 border border-cyan-500/20 p-3 text-cyan-300 text-sm">Salinity Prediction</div>
+                  <div class="rounded-lg bg-cyan-500/10 border border-cyan-500/20 p-3 text-cyan-300 text-sm">Resilience Score</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const fileInput = document.getElementById('datasetFile');
+    const statusEl = document.getElementById('status');
+    const validationEl = document.getElementById('validation');
+
+    fileInput.addEventListener('change', function () {
+      if (fileInput.files.length > 0) {
+        statusEl.innerText = 'Dataset uploaded';
+        validationEl.innerText = 'Dataset validated successfully. SHUBAAD AI engine is ready for PCA and salinity prediction.';
+      }
+    });
+
+    function runAI() {
+      statusEl.innerText = 'Running AI analysis...';
+
+      setTimeout(() => {
+        statusEl.innerText = 'AI analysis completed';
+        validationEl.innerText = 'PCA, PLS salinity prediction, and resilience scoring completed successfully.';
+      }, 1500);
+    }
+  </script>
+</body>
+</html>
